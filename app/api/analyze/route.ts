@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getPlacesData } from "@/app/lib/google-places"
+import { analyzeReviews } from "@/app/lib/ai-analysis"
+import { getReviews } from "@/app/lib/serpapi"
 
 export async function POST(request: NextRequest) {
   try {
@@ -15,6 +17,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // 1 — Dati Google Places
     const placesData = await getPlacesData(businessName, city)
 
     if (!placesData) {
@@ -24,13 +27,22 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Calcolo punteggi
+    // 2 — Recensioni da SerpApi
+    const reviews = await getReviews(placesData.placeId)
+    console.log("Recensioni da SerpApi:", reviews.length)
+
+    // 3 — Analisi AI delle recensioni
+    const aiAnalysis = await analyzeReviews(businessName, reviews)
+    console.log("AI Analysis:", aiAnalysis)
+
+    // 4 — Calcolo punteggi
     const reputationScore = calculateReputationScore(
       placesData.rating,
-      placesData.totalReviews
+      placesData.totalReviews,
+      aiAnalysis?.sentimentScore ?? null
     )
     const visibilityScore = calculateVisibilityScore(placesData)
-    const socialScore = 60 // mock per ora, lo faremo dopo
+    const socialScore = 50
 
     // Omni Score = media pesata
     const omniScore = Math.round(
@@ -59,6 +71,14 @@ export async function POST(request: NextRequest) {
         hasInstagram: false,
         hasFacebook: false,
       },
+      analysis: aiAnalysis
+        ? {
+            strengths: aiAnalysis.strengths,
+            weaknesses: aiAnalysis.weaknesses,
+            summary: aiAnalysis.summary,
+            sentimentScore: aiAnalysis.sentimentScore,
+          }
+        : null,
       details: {
         address: placesData.address,
         phone: placesData.phoneNumber,
@@ -66,7 +86,7 @@ export async function POST(request: NextRequest) {
         googleMapsUrl: placesData.googleMapsUrl,
         isOpen: placesData.isOpen,
       },
-      actionPlan: generateActionPlan(placesData),
+      actionPlan: generateActionPlan(placesData, aiAnalysis),
     })
   } catch (error) {
     console.error("Errore analyze:", error)
@@ -85,36 +105,31 @@ function isRealWebsite(url: string | null): boolean {
   return !notRealWebsites.some((fake) => url.includes(fake))
 }
 
-function calculateReputationScore(rating: number, totalReviews: number): number {
+function calculateReputationScore(
+  rating: number,
+  totalReviews: number,
+  sentimentScore: number | null
+): number {
   if (rating === 0) return 0
-  // Rating vale 70 punti, numero recensioni vale 30
-  const ratingScore = (rating / 5) * 70
-  const reviewScore = Math.min((totalReviews / 100) * 30, 30)
-  return Math.round(ratingScore + reviewScore)
+  const ratingScore = (rating / 5) * 60
+  const reviewScore = Math.min((totalReviews / 100) * 20, 20)
+  const sentiment = sentimentScore ?? 50
+  const sentimentContribution = (sentiment / 100) * 20
+  return Math.round(ratingScore + reviewScore + sentimentContribution)
 }
 
 function calculateVisibilityScore(placesData: any): number {
   let score = 0
-
-  // Trovata su Google Maps = 40 punti base
   score += 40
-
-  // Ha un sito web reale = 30 punti
   if (isRealWebsite(placesData.website)) score += 30
-
-  // Ha un numero di telefono = 15 punti
   if (placesData.phoneNumber) score += 15
-
-  // Ha gli orari configurati = 15 punti
   if (placesData.isOpen !== null) score += 15
-
   return Math.min(score, 100)
 }
 
-function generateActionPlan(placesData: any) {
+function generateActionPlan(placesData: any, aiAnalysis: any) {
   const actions: { priority: number; action: string; impact: string }[] = []
 
-  // Poche recensioni
   if (placesData.totalReviews < 200) {
     actions.push({
       priority: actions.length + 1,
@@ -123,7 +138,6 @@ function generateActionPlan(placesData: any) {
     })
   }
 
-  // Rating migliorabile
   if (placesData.rating < 4.5) {
     actions.push({
       priority: actions.length + 1,
@@ -132,7 +146,6 @@ function generateActionPlan(placesData: any) {
     })
   }
 
-  // Nessun sito web reale
   if (!isRealWebsite(placesData.website)) {
     actions.push({
       priority: actions.length + 1,
@@ -143,7 +156,6 @@ function generateActionPlan(placesData: any) {
     })
   }
 
-  // Nessun telefono
   if (!placesData.phoneNumber) {
     actions.push({
       priority: actions.length + 1,
@@ -152,7 +164,6 @@ function generateActionPlan(placesData: any) {
     })
   }
 
-  // Orari non configurati
   if (placesData.isOpen === null) {
     actions.push({
       priority: actions.length + 1,
@@ -161,7 +172,14 @@ function generateActionPlan(placesData: any) {
     })
   }
 
-  // Consiglio sempre presente
+  if (aiAnalysis?.weaknesses && aiAnalysis.weaknesses.length > 0) {
+    actions.push({
+      priority: actions.length + 1,
+      action: `Lavora su: ${aiAnalysis.weaknesses[0].toLowerCase()}`,
+      impact: "Alto",
+    })
+  }
+
   actions.push({
     priority: actions.length + 1,
     action: "Rispondi alle recensioni recenti — aumenta la fiducia dei nuovi clienti",
