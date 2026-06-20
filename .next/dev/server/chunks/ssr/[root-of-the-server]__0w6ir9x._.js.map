@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 13, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/NuovoAdmin5/Desktop/omni/app/favicon.ico.mjs%20%28structured%20image%20object%29"],"sourcesContent":["import src from \"IMAGE\";\nexport default { src, width: 256, height: 256 }\n"],"names":["src","width","height"],"mappings":";;;;AAAA;;uCACe;IAAEA,KAAAA,mIAAG;IAAEC,OAAO;IAAKC,QAAQ;AAAI"}},
+    {"offset": {"line": 34, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/NuovoAdmin5/Desktop/omni/app/page.tsx"],"sourcesContent":["import SearchForm from \"./components/SearchForm\"\n\nexport default function Home() {\n  return (\n    <main className=\"min-h-screen bg-gray-50 flex flex-col items-center justify-center gap-8\">\n      <div className=\"text-center\">\n        <h1 className=\"text-4xl font-bold text-gray-900\">Omni</h1>\n        <p className=\"mt-3 text-gray-500\">Scopri quanto è visibile la tua attività online</p>\n      </div>\n      <SearchForm />\n    </main>\n  )\n}"],"names":["Home","className"],"mappings":";;;;;AAAA;;;AAEe,SAASA;IACtB,qBACE,8OAAC;QAAKC,WAAU;;0BACd,8OAAC;gBAAIA,WAAU;;kCACb,8OAAC;wBAAGA,WAAU;kCAAmC;;;;;;kCACjD,8OAAC;wBAAEA,WAAU;kCAAqB;;;;;;;;;;;;0BAEpC,8OAAC,2IAAU;;;;;;;;;;;AAGjB"}}]
+}
