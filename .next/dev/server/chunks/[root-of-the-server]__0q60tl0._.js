@@ -59,7 +59,7 @@ async function getPlacesData(businessName, city) {
             headers: {
                 "Content-Type": "application/json",
                 "X-Goog-Api-Key": apiKey,
-                "X-Goog-FieldMask": "places.id,places.displayName,places.rating,places.userRatingCount,places.formattedAddress"
+                "X-Goog-FieldMask": "places.id,places.displayName,places.rating,places.userRatingCount,places.formattedAddress,places.types"
             },
             body: JSON.stringify({
                 textQuery: `${businessName} ${city}`,
@@ -91,6 +91,7 @@ async function getPlacesData(businessName, city) {
             website: details.websiteUri || null,
             isOpen: details.regularOpeningHours?.openNow ?? null,
             googleMapsUrl: details.googleMapsUri || "",
+            types: place.types || [],
             reviews: (details.reviews || []).map((r)=>({
                     author: r.authorAttribution?.displayName || "Anonimo",
                     rating: r.rating,

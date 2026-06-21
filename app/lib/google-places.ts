@@ -8,6 +8,7 @@ export type PlacesResult = {
   website: string | null
   isOpen: boolean | null
   googleMapsUrl: string
+  types: string[]
   reviews: {
     author: string
     rating: number
@@ -34,7 +35,7 @@ export async function getPlacesData(
         headers: {
           "Content-Type": "application/json",
           "X-Goog-Api-Key": apiKey,
-          "X-Goog-FieldMask": "places.id,places.displayName,places.rating,places.userRatingCount,places.formattedAddress",
+          "X-Goog-FieldMask": "places.id,places.displayName,places.rating,places.userRatingCount,places.formattedAddress,places.types",
         },
         body: JSON.stringify({
           textQuery: `${businessName} ${city}`,
@@ -76,6 +77,7 @@ export async function getPlacesData(
       website: details.websiteUri || null,
       isOpen: details.regularOpeningHours?.openNow ?? null,
       googleMapsUrl: details.googleMapsUri || "",
+      types: place.types || [],
       reviews: (details.reviews || []).map((r: any) => ({
         author: r.authorAttribution?.displayName || "Anonimo",
         rating: r.rating,

@@ -73,3 +73,79 @@ Regole:
     return null
   }
 }
+
+export async function inferBusinessType(
+  businessName: string,
+  types: string[]
+): Promise<string> {
+  const apiKey = process.env.ANTHROPIC_API_KEY
+  if (!apiKey) return "attività"
+
+  try {
+    const client = new Anthropic({ apiKey })
+
+    const message = await client.messages.create({
+      model: "claude-haiku-4-5",
+      max_tokens: 100,
+      messages: [
+        {
+          role: "user",
+          content: `Dato il nome di un'attività e i suoi tipi Google, rispondi SOLO con il tipo di attività in italiano, una o due parole, minuscolo, senza punteggiatura.
+
+Nome: "${businessName}"
+Tipi Google: ${types.join(", ")}
+
+Esempi di risposta: pizzeria, bar, paninoteca, palestra, parrucchiere, dentista, ristorante, gelateria, pasticceria, hotel
+
+Rispondi solo con il tipo, nient'altro.`,
+        },
+      ],
+    })
+
+    const text = message.content[0].type === "text" ? message.content[0].text.trim() : "attività"
+    console.log("Tipo attività inferito:", text)
+    return text
+  } catch (error) {
+    console.error("Errore inferBusinessType:", error)
+    return "attività"
+  }
+}
+
+export async function generateKeywords(
+  businessName: string,
+  city: string,
+  businessType: string
+): Promise<string[]> {
+  const apiKey = process.env.ANTHROPIC_API_KEY
+  if (!apiKey) return [`${businessType} ${city}`]
+
+  try {
+    const client = new Anthropic({ apiKey })
+
+    const message = await client.messages.create({
+      model: "claude-haiku-4-5",
+      max_tokens: 200,
+      messages: [
+        {
+          role: "user",
+          content: `Sei un cliente che vuole trovare "${businessName}", una ${businessType} a ${city}, ma non ne conosce il nome.
+
+Genera 5 ricerche Google realistiche e diverse tra loro che faresti per trovare questo tipo di attività.
+Le ricerche devono essere varie: alcune generiche, alcune specifiche, alcune con intento diverso.
+Rispondi SOLO con un JSON array di stringhe, senza testo aggiuntivo, senza backtick.
+
+Esempio formato: ["ricerca 1", "ricerca 2", "ricerca 3", "ricerca 4", "ricerca 5"]`,
+        },
+      ],
+    })
+
+    const text = message.content[0].type === "text" ? message.content[0].text.trim() : "[]"
+    const cleaned = text.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim()
+    const keywords = JSON.parse(cleaned)
+    console.log("Keyword generate:", keywords)
+    return keywords
+  } catch (error) {
+    console.error("Errore generateKeywords:", error)
+    return [`${businessType} ${city}`, `${businessType} a ${city}`]
+  }
+}

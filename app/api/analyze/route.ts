@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getPlacesData } from "@/app/lib/google-places"
-import { analyzeReviews } from "@/app/lib/ai-analysis"
+import { analyzeReviews, inferBusinessType } from "@/app/lib/ai-analysis"
 import { getReviews } from "@/app/lib/serpapi"
+import { analyzeDiscoverability } from "@/app/lib/discoverability"
 
 export async function POST(request: NextRequest) {
   try {
@@ -35,13 +36,21 @@ export async function POST(request: NextRequest) {
     const aiAnalysis = await analyzeReviews(businessName, reviews)
     console.log("AI Analysis:", aiAnalysis)
 
-    // 4 — Calcolo punteggi
+    // 4 — Tipo di attività
+    const businessType = await inferBusinessType(placesData.name, placesData.types)
+    console.log("Tipo attività:", businessType)
+
+    // 5 — Discoverability
+    const discoverability = await analyzeDiscoverability(businessName, city, businessType)
+    console.log("Discoverability:", discoverability)
+
+    // 6 — Calcolo punteggi
     const reputationScore = calculateReputationScore(
       placesData.rating,
       placesData.totalReviews,
       aiAnalysis?.sentimentScore ?? null
     )
-    const visibilityScore = calculateVisibilityScore(placesData)
+    const visibilityScore = calculateVisibilityScore(placesData, discoverability.score)
     const socialScore = 50
 
     // Omni Score = media pesata
@@ -65,6 +74,10 @@ export async function POST(request: NextRequest) {
         foundOnGoogle: true,
         hasWebsite: isRealWebsite(placesData.website),
         websiteUrl: isRealWebsite(placesData.website) ? placesData.website : null,
+        discoverability: {
+          score: discoverability.score,
+          keywords: discoverability.keywords,
+        },
       },
       social: {
         score: socialScore,
@@ -86,7 +99,7 @@ export async function POST(request: NextRequest) {
         googleMapsUrl: placesData.googleMapsUrl,
         isOpen: placesData.isOpen,
       },
-      actionPlan: generateActionPlan(placesData, aiAnalysis),
+      actionPlan: generateActionPlan(placesData, aiAnalysis, discoverability),
     })
   } catch (error) {
     console.error("Errore analyze:", error)
@@ -118,17 +131,26 @@ function calculateReputationScore(
   return Math.round(ratingScore + reviewScore + sentimentContribution)
 }
 
-function calculateVisibilityScore(placesData: any): number {
+function calculateVisibilityScore(placesData: any, discoverabilityScore: number): number {
   let score = 0
-  score += 40
   if (isRealWebsite(placesData.website)) score += 30
-  if (placesData.phoneNumber) score += 15
+  if (placesData.phoneNumber) score += 20
   if (placesData.isOpen !== null) score += 15
+  score += Math.round(discoverabilityScore * 0.35)
   return Math.min(score, 100)
 }
 
-function generateActionPlan(placesData: any, aiAnalysis: any) {
+function generateActionPlan(placesData: any, aiAnalysis: any, discoverability: any) {
   const actions: { priority: number; action: string; impact: string }[] = []
+
+  const poorKeywords = discoverability.keywords.filter((k: any) => k.score === 0)
+  if (poorKeywords.length > 2) {
+    actions.push({
+      priority: actions.length + 1,
+      action: `Non appari per ${poorKeywords.length} ricerche su ${discoverability.keywords.length} — ottimizza la scheda Google Business con parole chiave rilevanti`,
+      impact: "Alto",
+    })
+  }
 
   if (placesData.totalReviews < 200) {
     actions.push({
@@ -141,7 +163,7 @@ function generateActionPlan(placesData: any, aiAnalysis: any) {
   if (placesData.rating < 4.5) {
     actions.push({
       priority: actions.length + 1,
-      action: `Il tuo rating è ${placesData.rating}/5 — rispondere a tutte le recensioni (positive e negative) può migliorarlo`,
+      action: `Il tuo rating è ${placesData.rating}/5 — rispondere a tutte le recensioni può migliorarlo`,
       impact: "Alto",
     })
   }
@@ -150,25 +172,9 @@ function generateActionPlan(placesData: any, aiAnalysis: any) {
     actions.push({
       priority: actions.length + 1,
       action: placesData.website?.includes("facebook.com")
-        ? "Hai solo una pagina Facebook come sito — crea un sito web professionale per aumentare la credibilità"
+        ? "Hai solo una pagina Facebook come sito — crea un sito web professionale"
         : "Crea un sito web — le attività con sito ricevono il 35% di contatti in più",
       impact: "Alto",
-    })
-  }
-
-  if (!placesData.phoneNumber) {
-    actions.push({
-      priority: actions.length + 1,
-      action: "Aggiungi un numero di telefono alla scheda Google Business",
-      impact: "Medio",
-    })
-  }
-
-  if (placesData.isOpen === null) {
-    actions.push({
-      priority: actions.length + 1,
-      action: "Configura gli orari di apertura su Google Business — i clienti li cercano spesso",
-      impact: "Medio",
     })
   }
 
@@ -176,7 +182,7 @@ function generateActionPlan(placesData: any, aiAnalysis: any) {
     actions.push({
       priority: actions.length + 1,
       action: `Lavora su: ${aiAnalysis.weaknesses[0].toLowerCase()}`,
-      impact: "Alto",
+      impact: "Medio",
     })
   }
 
