@@ -3,6 +3,7 @@ import { getPlacesData } from "@/app/lib/google-places"
 import { analyzeReviews, inferBusinessType } from "@/app/lib/ai-analysis"
 import { getReviews } from "@/app/lib/serpapi"
 import { analyzeDiscoverability } from "@/app/lib/discoverability"
+import { analyzeSocial } from "@/app/lib/social"
 
 export async function POST(request: NextRequest) {
   try {
@@ -39,19 +40,23 @@ export async function POST(request: NextRequest) {
     // 4 — Tipo di attività
     const businessType = await inferBusinessType(placesData.name, placesData.types)
     console.log("Tipo attività:", businessType)
+    
+    // 5 — Social
+    const socialResult = await analyzeSocial(businessName, city)
+    console.log("Social:", socialResult)
 
-    // 5 — Discoverability
+    // 6 — Discoverability
     const discoverability = await analyzeDiscoverability(businessName, city, businessType)
     console.log("Discoverability:", discoverability)
 
-    // 6 — Calcolo punteggi
+    // 7 — Calcolo punteggi
     const reputationScore = calculateReputationScore(
       placesData.rating,
       placesData.totalReviews,
       aiAnalysis?.sentimentScore ?? null
     )
     const visibilityScore = calculateVisibilityScore(placesData, discoverability.score)
-    const socialScore = 50
+    const socialScore = socialResult.score
 
     // Omni Score = media pesata
     const omniScore = Math.round(
@@ -81,8 +86,11 @@ export async function POST(request: NextRequest) {
       },
       social: {
         score: socialScore,
-        hasInstagram: false,
-        hasFacebook: false,
+        instagram: socialResult.instagram,
+        facebook: socialResult.facebook,
+        tiktok: socialResult.tiktok,
+        tripadvisor: socialResult.tripadvisor,
+        nameConsistency: socialResult.nameConsistency,
       },
       analysis: aiAnalysis
         ? {

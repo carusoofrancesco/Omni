@@ -303,6 +303,7 @@ function SearchForm() {
                 })
             });
             const data = await response.json();
+            console.log("Social ricevuto:", JSON.stringify(data.social, null, 2));
             if (!response.ok) {
                 setError(data.error || "Qualcosa è andato storto");
                 return;
@@ -319,807 +320,1090 @@ function SearchForm() {
         city: city
     }, void 0, false, {
         fileName: "[project]/app/components/SearchForm.tsx",
-        lineNumber: 70,
+        lineNumber: 93,
         columnNumber: 25
     }, this);
-    if (result) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        style: {
-            maxWidth: "480px",
-            margin: "0 auto",
-            padding: "0 1.5rem 4rem"
-        },
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                style: {
-                    background: C.card,
-                    border: `0.5px solid ${C.border}`,
-                    borderRadius: "20px",
-                    padding: "2rem",
-                    textAlign: "center",
-                    marginBottom: "1rem"
-                },
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        style: {
-                            fontSize: "11px",
-                            letterSpacing: "0.8px",
-                            color: C.textTertiary,
-                            marginBottom: "0.75rem"
-                        },
-                        children: "OMNI SCORE"
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/SearchForm.tsx",
-                        lineNumber: 76,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        style: {
-                            fontSize: "96px",
-                            fontWeight: 800,
-                            letterSpacing: "-6px",
-                            color: C.purple,
-                            lineHeight: 1
-                        },
-                        children: result.omniScore
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/SearchForm.tsx",
-                        lineNumber: 77,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        style: {
-                            fontSize: "12px",
-                            color: C.textTertiary,
-                            marginTop: "0.4rem"
-                        },
-                        children: "su 100"
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/SearchForm.tsx",
-                        lineNumber: 78,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        style: {
-                            marginTop: "1.25rem",
-                            background: C.input,
-                            borderRadius: "99px",
-                            height: "2px",
-                            overflow: "hidden"
-                        },
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            style: {
-                                height: "2px",
-                                width: `${result.omniScore}%`,
-                                background: `linear-gradient(90deg,${C.purpleLight},${C.purple})`,
-                                borderRadius: "99px",
-                                transition: "width 1s cubic-bezier(0.16,1,0.3,1)"
-                            }
-                        }, void 0, false, {
-                            fileName: "[project]/app/components/SearchForm.tsx",
-                            lineNumber: 80,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/SearchForm.tsx",
-                        lineNumber: 79,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        style: {
-                            fontSize: "13px",
-                            color: C.textTertiary,
-                            marginTop: "1rem"
-                        },
-                        children: [
-                            result.businessName,
-                            " · ",
-                            result.city
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/app/components/SearchForm.tsx",
-                        lineNumber: 82,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/app/components/SearchForm.tsx",
-                lineNumber: 75,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                style: {
-                    background: C.card,
-                    border: `0.5px solid ${C.border}`,
-                    borderRadius: "20px",
-                    padding: "1.5rem 2rem",
-                    marginBottom: "1rem"
-                },
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+    if (result) {
+        const ig = result.social?.instagram ?? {
+            found: false,
+            url: null,
+            verified: false
+        };
+        const fb = result.social?.facebook ?? {
+            found: false,
+            url: null
+        };
+        const tk = result.social?.tiktok ?? {
+            found: false,
+            url: null
+        };
+        const ta = result.social?.tripadvisor ?? {
+            found: false,
+            url: null,
+            rating: null,
+            reviews: null
+        };
+        const nc = result.social?.nameConsistency ?? false;
+        const socialScore = result.social?.score ?? 0;
+        const socialItems = [
+            {
+                label: "Instagram",
+                found: ig.found,
+                sub: ig.found ? ig.verified ? "Verificato" : "Trovato" : "Non trovato",
+                url: ig.url
+            },
+            {
+                label: "Facebook",
+                found: fb.found,
+                sub: fb.found ? "Trovato" : "Non trovato",
+                url: fb.url
+            },
+            {
+                label: "TikTok",
+                found: tk.found,
+                sub: tk.found ? "Trovato" : "Non trovato",
+                url: tk.url
+            },
+            {
+                label: "TripAdvisor",
+                found: ta.found,
+                sub: ta.found ? ta.rating ? `${ta.rating}/5` : "Trovato" : "Non trovato",
+                url: ta.url
+            },
+            {
+                label: "Nome coerente",
+                found: nc,
+                sub: nc ? "Sì" : "No",
+                url: null
+            }
+        ];
+        const socialSubtitle = [
+            ig.found && "IG",
+            fb.found && "FB",
+            tk.found && "TK"
+        ].filter(Boolean).join(" · ") || "Nessun profilo";
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            style: {
+                maxWidth: "480px",
+                margin: "0 auto",
+                padding: "0 1.5rem 4rem"
+            },
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     style: {
-                        display: "grid",
-                        gridTemplateColumns: "1fr 1fr 1fr",
-                        textAlign: "center"
+                        background: C.card,
+                        border: `0.5px solid ${C.border}`,
+                        borderRadius: "20px",
+                        padding: "2rem",
+                        textAlign: "center",
+                        marginBottom: "1rem"
                     },
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             style: {
-                                padding: "0.5rem 0",
-                                borderRight: `0.5px solid ${C.border}`
+                                fontSize: "11px",
+                                letterSpacing: "0.8px",
+                                color: C.textTertiary,
+                                marginBottom: "0.75rem"
                             },
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    style: {
-                                        fontSize: "10px",
-                                        letterSpacing: "0.6px",
-                                        color: C.textTertiary,
-                                        marginBottom: "0.5rem"
-                                    },
-                                    children: "REPUTAZIONE"
-                                }, void 0, false, {
-                                    fileName: "[project]/app/components/SearchForm.tsx",
-                                    lineNumber: 88,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    style: {
-                                        fontSize: "52px",
-                                        fontWeight: 800,
-                                        letterSpacing: "-3px",
-                                        color: scoreColor(result.reputation.score),
-                                        lineHeight: 1
-                                    },
-                                    children: result.reputation.score
-                                }, void 0, false, {
-                                    fileName: "[project]/app/components/SearchForm.tsx",
-                                    lineNumber: 89,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    style: {
-                                        fontSize: "10px",
-                                        color: C.textTertiary,
-                                        marginTop: "0.5rem"
-                                    },
-                                    children: [
-                                        result.reputation.rating,
-                                        " · ",
-                                        result.reputation.totalReviews,
-                                        " rec."
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/app/components/SearchForm.tsx",
-                                    lineNumber: 90,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
+                            children: "OMNI SCORE"
+                        }, void 0, false, {
                             fileName: "[project]/app/components/SearchForm.tsx",
-                            lineNumber: 87,
+                            lineNumber: 117,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             style: {
-                                padding: "0.5rem 0",
-                                borderRight: `0.5px solid ${C.border}`
+                                fontSize: "96px",
+                                fontWeight: 800,
+                                letterSpacing: "-6px",
+                                color: C.purple,
+                                lineHeight: 1
                             },
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    style: {
-                                        fontSize: "10px",
-                                        letterSpacing: "0.6px",
-                                        color: C.textTertiary,
-                                        marginBottom: "0.5rem"
-                                    },
-                                    children: "VISIBILITÀ"
-                                }, void 0, false, {
-                                    fileName: "[project]/app/components/SearchForm.tsx",
-                                    lineNumber: 93,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    style: {
-                                        fontSize: "52px",
-                                        fontWeight: 800,
-                                        letterSpacing: "-3px",
-                                        color: scoreColor(result.visibility.score),
-                                        lineHeight: 1
-                                    },
-                                    children: result.visibility.score
-                                }, void 0, false, {
-                                    fileName: "[project]/app/components/SearchForm.tsx",
-                                    lineNumber: 94,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    style: {
-                                        fontSize: "10px",
-                                        color: C.textTertiary,
-                                        marginTop: "0.5rem"
-                                    },
-                                    children: result.visibility.hasWebsite ? "Sito web" : "Nessun sito"
-                                }, void 0, false, {
-                                    fileName: "[project]/app/components/SearchForm.tsx",
-                                    lineNumber: 95,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
+                            children: result.omniScore
+                        }, void 0, false, {
                             fileName: "[project]/app/components/SearchForm.tsx",
-                            lineNumber: 92,
+                            lineNumber: 118,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             style: {
-                                padding: "0.5rem 0"
+                                fontSize: "12px",
+                                color: C.textTertiary,
+                                marginTop: "0.4rem"
+                            },
+                            children: "su 100"
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/SearchForm.tsx",
+                            lineNumber: 119,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                marginTop: "1.25rem",
+                                background: C.input,
+                                borderRadius: "99px",
+                                height: "2px",
+                                overflow: "hidden"
+                            },
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    height: "2px",
+                                    width: `${result.omniScore}%`,
+                                    background: `linear-gradient(90deg,${C.purpleLight},${C.purple})`,
+                                    borderRadius: "99px",
+                                    transition: "width 1s cubic-bezier(0.16,1,0.3,1)"
+                                }
+                            }, void 0, false, {
+                                fileName: "[project]/app/components/SearchForm.tsx",
+                                lineNumber: 121,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/SearchForm.tsx",
+                            lineNumber: 120,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                fontSize: "13px",
+                                color: C.textTertiary,
+                                marginTop: "1rem"
                             },
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    style: {
-                                        fontSize: "10px",
-                                        letterSpacing: "0.6px",
-                                        color: C.textTertiary,
-                                        marginBottom: "0.5rem"
-                                    },
-                                    children: "SOCIAL"
-                                }, void 0, false, {
-                                    fileName: "[project]/app/components/SearchForm.tsx",
-                                    lineNumber: 98,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    style: {
-                                        fontSize: "52px",
-                                        fontWeight: 800,
-                                        letterSpacing: "-3px",
-                                        color: scoreColor(result.social.score),
-                                        lineHeight: 1
-                                    },
-                                    children: result.social.score
-                                }, void 0, false, {
-                                    fileName: "[project]/app/components/SearchForm.tsx",
-                                    lineNumber: 99,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    style: {
-                                        fontSize: "10px",
-                                        color: C.textTertiary,
-                                        marginTop: "0.5rem"
-                                    },
-                                    children: "Non analizzato"
-                                }, void 0, false, {
-                                    fileName: "[project]/app/components/SearchForm.tsx",
-                                    lineNumber: 100,
-                                    columnNumber: 13
-                                }, this)
+                                result.businessName,
+                                " · ",
+                                result.city
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/components/SearchForm.tsx",
-                            lineNumber: 97,
+                            lineNumber: 123,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/components/SearchForm.tsx",
-                    lineNumber: 86,
+                    lineNumber: 116,
                     columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/app/components/SearchForm.tsx",
-                lineNumber: 85,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                style: {
-                    background: C.card,
-                    border: `0.5px solid ${C.border}`,
-                    borderRadius: "20px",
-                    padding: "1.5rem",
-                    marginBottom: "1rem"
-                },
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        style: {
-                            fontSize: "11px",
-                            letterSpacing: "0.5px",
-                            color: C.textTertiary,
-                            marginBottom: "1rem"
-                        },
-                        children: "DETTAGLI"
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/SearchForm.tsx",
-                        lineNumber: 106,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        style: {
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "12px"
-                        },
-                        children: [
-                            result.details.address && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                style: {
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: "12px",
-                                    fontSize: "13px",
-                                    color: C.textSecondary
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                        width: "15",
-                                        height: "15",
-                                        viewBox: "0 0 24 24",
-                                        fill: "none",
-                                        stroke: "#AEAEB2",
-                                        strokeWidth: "1.5",
-                                        strokeLinecap: "round",
-                                        strokeLinejoin: "round",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                d: "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/components/SearchForm.tsx",
-                                                lineNumber: 110,
-                                                columnNumber: 155
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                                                cx: "12",
-                                                cy: "9",
-                                                r: "2.5"
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/components/SearchForm.tsx",
-                                                lineNumber: 110,
-                                                columnNumber: 238
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/components/SearchForm.tsx",
-                                        lineNumber: 110,
-                                        columnNumber: 15
-                                    }, this),
-                                    result.details.address
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/app/components/SearchForm.tsx",
-                                lineNumber: 109,
-                                columnNumber: 13
-                            }, this),
-                            result.details.phone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                style: {
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: "12px",
-                                    fontSize: "13px",
-                                    color: C.textSecondary
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                        width: "15",
-                                        height: "15",
-                                        viewBox: "0 0 24 24",
-                                        fill: "none",
-                                        stroke: "#AEAEB2",
-                                        strokeWidth: "1.5",
-                                        strokeLinecap: "round",
-                                        strokeLinejoin: "round",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                            d: "M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"
-                                        }, void 0, false, {
-                                            fileName: "[project]/app/components/SearchForm.tsx",
-                                            lineNumber: 116,
-                                            columnNumber: 155
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/SearchForm.tsx",
-                                        lineNumber: 116,
-                                        columnNumber: 15
-                                    }, this),
-                                    result.details.phone
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/app/components/SearchForm.tsx",
-                                lineNumber: 115,
-                                columnNumber: 13
-                            }, this),
-                            result.details.isOpen !== null && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                style: {
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: "12px",
-                                    fontSize: "13px"
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                        width: "15",
-                                        height: "15",
-                                        viewBox: "0 0 24 24",
-                                        fill: "none",
-                                        strokeWidth: "1.5",
-                                        strokeLinecap: "round",
-                                        strokeLinejoin: "round",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                                                cx: "12",
-                                                cy: "12",
-                                                r: "10",
-                                                stroke: result.details.isOpen ? "#16A34A" : "#C0392B"
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/components/SearchForm.tsx",
-                                                lineNumber: 123,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("polyline", {
-                                                points: "12 6 12 12 16 14",
-                                                stroke: result.details.isOpen ? "#16A34A" : "#C0392B"
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/components/SearchForm.tsx",
-                                                lineNumber: 124,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/components/SearchForm.tsx",
-                                        lineNumber: 122,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        style: {
-                                            color: result.details.isOpen ? "#16A34A" : "#C0392B",
-                                            fontWeight: 500
-                                        },
-                                        children: result.details.isOpen ? "Aperto ora" : "Chiuso ora"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/SearchForm.tsx",
-                                        lineNumber: 126,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/app/components/SearchForm.tsx",
-                                lineNumber: 121,
-                                columnNumber: 13
-                            }, this),
-                            result.details.googleMapsUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                style: {
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: "12px",
-                                    fontSize: "13px"
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                        width: "15",
-                                        height: "15",
-                                        viewBox: "0 0 24 24",
-                                        fill: "none",
-                                        stroke: "#AEAEB2",
-                                        strokeWidth: "1.5",
-                                        strokeLinecap: "round",
-                                        strokeLinejoin: "round",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("polygon", {
-                                            points: "3 11 22 2 13 21 11 13 3 11"
-                                        }, void 0, false, {
-                                            fileName: "[project]/app/components/SearchForm.tsx",
-                                            lineNumber: 133,
-                                            columnNumber: 155
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/SearchForm.tsx",
-                                        lineNumber: 133,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        style: {
-                                            color: C.purple,
-                                            fontWeight: 500,
-                                            cursor: "pointer"
-                                        },
-                                        onClick: ()=>window.open(result.details.googleMapsUrl, "_blank"),
-                                        children: "Vedi su Google Maps"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/SearchForm.tsx",
-                                        lineNumber: 134,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/app/components/SearchForm.tsx",
-                                lineNumber: 132,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/app/components/SearchForm.tsx",
-                        lineNumber: 107,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/app/components/SearchForm.tsx",
-                lineNumber: 105,
-                columnNumber: 7
-            }, this),
-            result.analysis && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                style: {
-                    background: C.card,
-                    border: `0.5px solid ${C.border}`,
-                    borderRadius: "20px",
-                    padding: "1.5rem",
-                    marginBottom: "1rem"
-                },
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        style: {
-                            fontSize: "11px",
-                            letterSpacing: "0.5px",
-                            color: C.textTertiary,
-                            marginBottom: "0.75rem"
-                        },
-                        children: "ANALISI AI"
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/SearchForm.tsx",
-                        lineNumber: 144,
-                        columnNumber: 11
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        style: {
-                            fontSize: "13px",
-                            color: C.textSecondary,
-                            lineHeight: 1.6,
-                            marginBottom: "1.25rem",
-                            fontStyle: "italic"
-                        },
-                        children: result.analysis.summary
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/SearchForm.tsx",
-                        lineNumber: 145,
-                        columnNumber: 11
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        background: C.card,
+                        border: `0.5px solid ${C.border}`,
+                        borderRadius: "20px",
+                        padding: "1.5rem 2rem",
+                        marginBottom: "1rem"
+                    },
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         style: {
                             display: "grid",
-                            gridTemplateColumns: "1fr 1fr",
-                            gap: "0.75rem"
+                            gridTemplateColumns: "1fr 1fr 1fr",
+                            textAlign: "center"
                         },
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        style: {
-                                            fontSize: "11px",
-                                            letterSpacing: "0.4px",
-                                            color: "#0F6E56",
-                                            marginBottom: "0.6rem"
-                                        },
-                                        children: "PUNTI DI FORZA"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/SearchForm.tsx",
-                                        lineNumber: 150,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        style: {
-                                            display: "flex",
-                                            flexDirection: "column",
-                                            gap: "6px"
-                                        },
-                                        children: result.analysis.strengths.map((s, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                style: {
-                                                    fontSize: "12px",
-                                                    color: C.textSecondary,
-                                                    background: "#E1F5EE",
-                                                    borderRadius: "10px",
-                                                    padding: "8px 10px"
-                                                },
-                                                children: s
-                                            }, i, false, {
-                                                fileName: "[project]/app/components/SearchForm.tsx",
-                                                lineNumber: 153,
-                                                columnNumber: 19
-                                            }, this))
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/SearchForm.tsx",
-                                        lineNumber: 151,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/app/components/SearchForm.tsx",
-                                lineNumber: 149,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        style: {
-                                            fontSize: "11px",
-                                            letterSpacing: "0.4px",
-                                            color: "#A32D2D",
-                                            marginBottom: "0.6rem"
-                                        },
-                                        children: "CRITICITÀ"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/SearchForm.tsx",
-                                        lineNumber: 158,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        style: {
-                                            display: "flex",
-                                            flexDirection: "column",
-                                            gap: "6px"
-                                        },
-                                        children: result.analysis.weaknesses.map((w, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                style: {
-                                                    fontSize: "12px",
-                                                    color: C.textSecondary,
-                                                    background: "#FCEBEB",
-                                                    borderRadius: "10px",
-                                                    padding: "8px 10px"
-                                                },
-                                                children: w
-                                            }, i, false, {
-                                                fileName: "[project]/app/components/SearchForm.tsx",
-                                                lineNumber: 161,
-                                                columnNumber: 19
-                                            }, this))
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/SearchForm.tsx",
-                                        lineNumber: 159,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/app/components/SearchForm.tsx",
-                                lineNumber: 157,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/app/components/SearchForm.tsx",
-                        lineNumber: 148,
-                        columnNumber: 11
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/app/components/SearchForm.tsx",
-                lineNumber: 143,
-                columnNumber: 9
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                style: {
-                    background: C.card,
-                    border: `0.5px solid ${C.border}`,
-                    borderRadius: "20px",
-                    padding: "1.5rem",
-                    marginBottom: "1rem"
-                },
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        style: {
-                            fontSize: "11px",
-                            letterSpacing: "0.5px",
-                            color: C.textTertiary,
-                            marginBottom: "1rem"
-                        },
-                        children: "PIANO D'AZIONE"
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/SearchForm.tsx",
-                        lineNumber: 170,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        style: {
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "0.75rem"
-                        },
-                        children: result.actionPlan.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 style: {
-                                    display: "flex",
-                                    alignItems: "flex-start",
-                                    gap: "12px",
-                                    padding: "12px",
-                                    background: C.input,
-                                    borderRadius: "12px"
+                                    padding: "0.5rem 0",
+                                    borderRight: `0.5px solid ${C.border}`
                                 },
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         style: {
-                                            width: "22px",
-                                            height: "22px",
-                                            borderRadius: "50%",
-                                            background: C.purple,
-                                            display: "flex",
-                                            alignItems: "center",
-                                            justifyContent: "center",
-                                            fontSize: "11px",
-                                            fontWeight: 500,
-                                            color: "#fff",
-                                            flexShrink: 0
+                                            fontSize: "10px",
+                                            letterSpacing: "0.6px",
+                                            color: C.textTertiary,
+                                            marginBottom: "0.5rem"
                                         },
-                                        children: item.priority
+                                        children: "REPUTAZIONE"
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/SearchForm.tsx",
-                                        lineNumber: 174,
+                                        lineNumber: 129,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         style: {
-                                            flex: 1,
-                                            fontSize: "13px",
-                                            color: C.textPrimary,
-                                            lineHeight: 1.5
+                                            fontSize: "52px",
+                                            fontWeight: 800,
+                                            letterSpacing: "-3px",
+                                            color: scoreColor(result.reputation.score),
+                                            lineHeight: 1
                                         },
-                                        children: item.action
+                                        children: result.reputation.score
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/SearchForm.tsx",
-                                        lineNumber: 175,
+                                        lineNumber: 130,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         style: {
                                             fontSize: "10px",
-                                            fontWeight: 500,
-                                            padding: "3px 8px",
-                                            borderRadius: "99px",
-                                            flexShrink: 0,
-                                            ...impactStyle(item.impact)
+                                            color: C.textTertiary,
+                                            marginTop: "0.5rem"
                                         },
-                                        children: item.impact
-                                    }, void 0, false, {
+                                        children: [
+                                            result.reputation.rating,
+                                            " · ",
+                                            result.reputation.totalReviews,
+                                            " rec."
+                                        ]
+                                    }, void 0, true, {
                                         fileName: "[project]/app/components/SearchForm.tsx",
-                                        lineNumber: 176,
+                                        lineNumber: 131,
                                         columnNumber: 15
                                     }, this)
                                 ]
-                            }, item.priority, true, {
+                            }, void 0, true, {
                                 fileName: "[project]/app/components/SearchForm.tsx",
-                                lineNumber: 173,
+                                lineNumber: 128,
                                 columnNumber: 13
-                            }, this))
-                    }, void 0, false, {
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    padding: "0.5rem 0",
+                                    borderRight: `0.5px solid ${C.border}`
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            fontSize: "10px",
+                                            letterSpacing: "0.6px",
+                                            color: C.textTertiary,
+                                            marginBottom: "0.5rem"
+                                        },
+                                        children: "VISIBILITÀ"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/components/SearchForm.tsx",
+                                        lineNumber: 134,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            fontSize: "52px",
+                                            fontWeight: 800,
+                                            letterSpacing: "-3px",
+                                            color: scoreColor(result.visibility.score),
+                                            lineHeight: 1
+                                        },
+                                        children: result.visibility.score
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/components/SearchForm.tsx",
+                                        lineNumber: 135,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            fontSize: "10px",
+                                            color: C.textTertiary,
+                                            marginTop: "0.5rem"
+                                        },
+                                        children: result.visibility.hasWebsite ? "Sito web" : "Nessun sito"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/components/SearchForm.tsx",
+                                        lineNumber: 136,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/app/components/SearchForm.tsx",
+                                lineNumber: 133,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    padding: "0.5rem 0"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            fontSize: "10px",
+                                            letterSpacing: "0.6px",
+                                            color: C.textTertiary,
+                                            marginBottom: "0.5rem"
+                                        },
+                                        children: "SOCIAL"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/components/SearchForm.tsx",
+                                        lineNumber: 139,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            fontSize: "52px",
+                                            fontWeight: 800,
+                                            letterSpacing: "-3px",
+                                            color: scoreColor(socialScore),
+                                            lineHeight: 1
+                                        },
+                                        children: socialScore
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/components/SearchForm.tsx",
+                                        lineNumber: 140,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            fontSize: "10px",
+                                            color: C.textTertiary,
+                                            marginTop: "0.5rem"
+                                        },
+                                        children: socialSubtitle
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/components/SearchForm.tsx",
+                                        lineNumber: 141,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/app/components/SearchForm.tsx",
+                                lineNumber: 138,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/app/components/SearchForm.tsx",
-                        lineNumber: 171,
-                        columnNumber: 9
+                        lineNumber: 127,
+                        columnNumber: 11
                     }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/app/components/SearchForm.tsx",
-                lineNumber: 169,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                onClick: ()=>{
-                    setResult(null);
-                    setBusinessName("");
-                    setCity("");
-                },
-                style: {
-                    width: "100%",
-                    padding: "13px",
-                    background: "transparent",
-                    border: `0.5px solid ${C.border}`,
-                    borderRadius: "12px",
-                    fontSize: "14px",
-                    color: C.textSecondary,
-                    cursor: "pointer",
-                    marginTop: "0.5rem"
-                },
-                children: "Nuova analisi"
-            }, void 0, false, {
-                fileName: "[project]/app/components/SearchForm.tsx",
-                lineNumber: 182,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "[project]/app/components/SearchForm.tsx",
-        lineNumber: 73,
-        columnNumber: 5
-    }, this);
+                }, void 0, false, {
+                    fileName: "[project]/app/components/SearchForm.tsx",
+                    lineNumber: 126,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        background: C.card,
+                        border: `0.5px solid ${C.border}`,
+                        borderRadius: "20px",
+                        padding: "1.5rem",
+                        marginBottom: "1rem"
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                fontSize: "11px",
+                                letterSpacing: "0.5px",
+                                color: C.textTertiary,
+                                marginBottom: "1rem"
+                            },
+                            children: "DETTAGLI"
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/SearchForm.tsx",
+                            lineNumber: 147,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "12px"
+                            },
+                            children: [
+                                result.details.address && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        display: "flex",
+                                        alignItems: "center",
+                                        gap: "12px",
+                                        fontSize: "13px",
+                                        color: C.textSecondary
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                            width: "15",
+                                            height: "15",
+                                            viewBox: "0 0 24 24",
+                                            fill: "none",
+                                            stroke: "#AEAEB2",
+                                            strokeWidth: "1.5",
+                                            strokeLinecap: "round",
+                                            strokeLinejoin: "round",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                    d: "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/components/SearchForm.tsx",
+                                                    lineNumber: 151,
+                                                    columnNumber: 157
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
+                                                    cx: "12",
+                                                    cy: "9",
+                                                    r: "2.5"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/components/SearchForm.tsx",
+                                                    lineNumber: 151,
+                                                    columnNumber: 240
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/app/components/SearchForm.tsx",
+                                            lineNumber: 151,
+                                            columnNumber: 17
+                                        }, this),
+                                        result.details.address
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/app/components/SearchForm.tsx",
+                                    lineNumber: 150,
+                                    columnNumber: 15
+                                }, this),
+                                result.details.phone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        display: "flex",
+                                        alignItems: "center",
+                                        gap: "12px",
+                                        fontSize: "13px",
+                                        color: C.textSecondary
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                            width: "15",
+                                            height: "15",
+                                            viewBox: "0 0 24 24",
+                                            fill: "none",
+                                            stroke: "#AEAEB2",
+                                            strokeWidth: "1.5",
+                                            strokeLinecap: "round",
+                                            strokeLinejoin: "round",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                d: "M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/components/SearchForm.tsx",
+                                                lineNumber: 157,
+                                                columnNumber: 157
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/SearchForm.tsx",
+                                            lineNumber: 157,
+                                            columnNumber: 17
+                                        }, this),
+                                        result.details.phone
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/app/components/SearchForm.tsx",
+                                    lineNumber: 156,
+                                    columnNumber: 15
+                                }, this),
+                                result.details.isOpen !== null && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        display: "flex",
+                                        alignItems: "center",
+                                        gap: "12px",
+                                        fontSize: "13px"
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                            width: "15",
+                                            height: "15",
+                                            viewBox: "0 0 24 24",
+                                            fill: "none",
+                                            strokeWidth: "1.5",
+                                            strokeLinecap: "round",
+                                            strokeLinejoin: "round",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
+                                                    cx: "12",
+                                                    cy: "12",
+                                                    r: "10",
+                                                    stroke: result.details.isOpen ? "#16A34A" : "#C0392B"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/components/SearchForm.tsx",
+                                                    lineNumber: 164,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("polyline", {
+                                                    points: "12 6 12 12 16 14",
+                                                    stroke: result.details.isOpen ? "#16A34A" : "#C0392B"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/components/SearchForm.tsx",
+                                                    lineNumber: 165,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/app/components/SearchForm.tsx",
+                                            lineNumber: 163,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            style: {
+                                                color: result.details.isOpen ? "#16A34A" : "#C0392B",
+                                                fontWeight: 500
+                                            },
+                                            children: result.details.isOpen ? "Aperto ora" : "Chiuso ora"
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/SearchForm.tsx",
+                                            lineNumber: 167,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/app/components/SearchForm.tsx",
+                                    lineNumber: 162,
+                                    columnNumber: 15
+                                }, this),
+                                result.details.googleMapsUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        display: "flex",
+                                        alignItems: "center",
+                                        gap: "12px",
+                                        fontSize: "13px"
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                            width: "15",
+                                            height: "15",
+                                            viewBox: "0 0 24 24",
+                                            fill: "none",
+                                            stroke: "#AEAEB2",
+                                            strokeWidth: "1.5",
+                                            strokeLinecap: "round",
+                                            strokeLinejoin: "round",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("polygon", {
+                                                points: "3 11 22 2 13 21 11 13 3 11"
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/components/SearchForm.tsx",
+                                                lineNumber: 174,
+                                                columnNumber: 157
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/SearchForm.tsx",
+                                            lineNumber: 174,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            style: {
+                                                color: C.purple,
+                                                fontWeight: 500,
+                                                cursor: "pointer"
+                                            },
+                                            onClick: ()=>window.open(result.details.googleMapsUrl, "_blank"),
+                                            children: "Vedi su Google Maps"
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/SearchForm.tsx",
+                                            lineNumber: 175,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/app/components/SearchForm.tsx",
+                                    lineNumber: 173,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/app/components/SearchForm.tsx",
+                            lineNumber: 148,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/app/components/SearchForm.tsx",
+                    lineNumber: 146,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        background: C.card,
+                        border: `0.5px solid ${C.border}`,
+                        borderRadius: "20px",
+                        padding: "1.5rem",
+                        marginBottom: "1rem"
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                fontSize: "11px",
+                                letterSpacing: "0.5px",
+                                color: C.textTertiary,
+                                marginBottom: "1rem"
+                            },
+                            children: "DISCOVERABILITY"
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/SearchForm.tsx",
+                            lineNumber: 184,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "8px"
+                            },
+                            children: result.visibility.discoverability.keywords.map((k, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        display: "flex",
+                                        alignItems: "center",
+                                        gap: "12px",
+                                        padding: "10px 12px",
+                                        background: C.input,
+                                        borderRadius: "10px"
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                width: "8px",
+                                                height: "8px",
+                                                borderRadius: "50%",
+                                                flexShrink: 0,
+                                                background: k.score >= 70 ? "#4ABA7A" : k.score >= 40 ? "#E8A84A" : "#D96B6B"
+                                            }
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/SearchForm.tsx",
+                                            lineNumber: 188,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                flex: 1,
+                                                fontSize: "13px",
+                                                color: C.textPrimary
+                                            },
+                                            children: k.keyword
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/SearchForm.tsx",
+                                            lineNumber: 189,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                fontSize: "11px",
+                                                color: C.textTertiary,
+                                                flexShrink: 0
+                                            },
+                                            children: k.inLocalPack ? `Maps #${k.localPackPosition}` : k.position ? `#${k.position}` : "Non trovato"
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/SearchForm.tsx",
+                                            lineNumber: 190,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, i, true, {
+                                    fileName: "[project]/app/components/SearchForm.tsx",
+                                    lineNumber: 187,
+                                    columnNumber: 15
+                                }, this))
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/SearchForm.tsx",
+                            lineNumber: 185,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                marginTop: "1rem",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "space-between"
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        fontSize: "11px",
+                                        color: C.textTertiary
+                                    },
+                                    children: "Score discoverability"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/components/SearchForm.tsx",
+                                    lineNumber: 197,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        fontSize: "20px",
+                                        fontWeight: 800,
+                                        letterSpacing: "-1px",
+                                        color: scoreColor(result.visibility.discoverability.score)
+                                    },
+                                    children: result.visibility.discoverability.score
+                                }, void 0, false, {
+                                    fileName: "[project]/app/components/SearchForm.tsx",
+                                    lineNumber: 198,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/app/components/SearchForm.tsx",
+                            lineNumber: 196,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/app/components/SearchForm.tsx",
+                    lineNumber: 183,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        background: C.card,
+                        border: `0.5px solid ${C.border}`,
+                        borderRadius: "20px",
+                        padding: "1.5rem",
+                        marginBottom: "1rem"
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                fontSize: "11px",
+                                letterSpacing: "0.5px",
+                                color: C.textTertiary,
+                                marginBottom: "1rem"
+                            },
+                            children: "SOCIAL & REPUTAZIONE"
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/SearchForm.tsx",
+                            lineNumber: 205,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "8px"
+                            },
+                            children: socialItems.map((item, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        display: "flex",
+                                        alignItems: "center",
+                                        gap: "12px",
+                                        padding: "10px 12px",
+                                        background: C.input,
+                                        borderRadius: "10px"
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                width: "8px",
+                                                height: "8px",
+                                                borderRadius: "50%",
+                                                flexShrink: 0,
+                                                background: item.found ? "#4ABA7A" : "#D96B6B"
+                                            }
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/SearchForm.tsx",
+                                            lineNumber: 209,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                flex: 1,
+                                                fontSize: "13px",
+                                                color: C.textPrimary
+                                            },
+                                            children: item.label
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/SearchForm.tsx",
+                                            lineNumber: 210,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                fontSize: "11px",
+                                                color: item.url ? C.purple : C.textTertiary,
+                                                cursor: item.url ? "pointer" : "default"
+                                            },
+                                            onClick: ()=>item.url && window.open(item.url, "_blank"),
+                                            children: item.sub
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/SearchForm.tsx",
+                                            lineNumber: 211,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, i, true, {
+                                    fileName: "[project]/app/components/SearchForm.tsx",
+                                    lineNumber: 208,
+                                    columnNumber: 15
+                                }, this))
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/SearchForm.tsx",
+                            lineNumber: 206,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/app/components/SearchForm.tsx",
+                    lineNumber: 204,
+                    columnNumber: 9
+                }, this),
+                result.analysis && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        background: C.card,
+                        border: `0.5px solid ${C.border}`,
+                        borderRadius: "20px",
+                        padding: "1.5rem",
+                        marginBottom: "1rem"
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                fontSize: "11px",
+                                letterSpacing: "0.5px",
+                                color: C.textTertiary,
+                                marginBottom: "0.75rem"
+                            },
+                            children: "ANALISI AI"
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/SearchForm.tsx",
+                            lineNumber: 224,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            style: {
+                                fontSize: "13px",
+                                color: C.textSecondary,
+                                lineHeight: 1.6,
+                                marginBottom: "1.25rem",
+                                fontStyle: "italic"
+                            },
+                            children: result.analysis.summary
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/SearchForm.tsx",
+                            lineNumber: 225,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                display: "grid",
+                                gridTemplateColumns: "1fr 1fr",
+                                gap: "0.75rem"
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                fontSize: "11px",
+                                                letterSpacing: "0.4px",
+                                                color: "#0F6E56",
+                                                marginBottom: "0.6rem"
+                                            },
+                                            children: "PUNTI DI FORZA"
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/SearchForm.tsx",
+                                            lineNumber: 230,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                gap: "6px"
+                                            },
+                                            children: result.analysis.strengths.map((s, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        fontSize: "12px",
+                                                        color: C.textSecondary,
+                                                        background: "#E1F5EE",
+                                                        borderRadius: "10px",
+                                                        padding: "8px 10px"
+                                                    },
+                                                    children: s
+                                                }, i, false, {
+                                                    fileName: "[project]/app/components/SearchForm.tsx",
+                                                    lineNumber: 233,
+                                                    columnNumber: 21
+                                                }, this))
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/SearchForm.tsx",
+                                            lineNumber: 231,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/app/components/SearchForm.tsx",
+                                    lineNumber: 229,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                fontSize: "11px",
+                                                letterSpacing: "0.4px",
+                                                color: "#A32D2D",
+                                                marginBottom: "0.6rem"
+                                            },
+                                            children: "CRITICITÀ"
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/SearchForm.tsx",
+                                            lineNumber: 238,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                gap: "6px"
+                                            },
+                                            children: result.analysis.weaknesses.map((w, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        fontSize: "12px",
+                                                        color: C.textSecondary,
+                                                        background: "#FCEBEB",
+                                                        borderRadius: "10px",
+                                                        padding: "8px 10px"
+                                                    },
+                                                    children: w
+                                                }, i, false, {
+                                                    fileName: "[project]/app/components/SearchForm.tsx",
+                                                    lineNumber: 241,
+                                                    columnNumber: 21
+                                                }, this))
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/SearchForm.tsx",
+                                            lineNumber: 239,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/app/components/SearchForm.tsx",
+                                    lineNumber: 237,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/app/components/SearchForm.tsx",
+                            lineNumber: 228,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/app/components/SearchForm.tsx",
+                    lineNumber: 223,
+                    columnNumber: 11
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        background: C.card,
+                        border: `0.5px solid ${C.border}`,
+                        borderRadius: "20px",
+                        padding: "1.5rem",
+                        marginBottom: "1rem"
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                fontSize: "11px",
+                                letterSpacing: "0.5px",
+                                color: C.textTertiary,
+                                marginBottom: "1rem"
+                            },
+                            children: "PIANO D'AZIONE"
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/SearchForm.tsx",
+                            lineNumber: 250,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "0.75rem"
+                            },
+                            children: result.actionPlan.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        display: "flex",
+                                        alignItems: "flex-start",
+                                        gap: "12px",
+                                        padding: "12px",
+                                        background: C.input,
+                                        borderRadius: "12px"
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                width: "22px",
+                                                height: "22px",
+                                                borderRadius: "50%",
+                                                background: C.purple,
+                                                display: "flex",
+                                                alignItems: "center",
+                                                justifyContent: "center",
+                                                fontSize: "11px",
+                                                fontWeight: 500,
+                                                color: "#fff",
+                                                flexShrink: 0
+                                            },
+                                            children: item.priority
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/SearchForm.tsx",
+                                            lineNumber: 254,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                flex: 1,
+                                                fontSize: "13px",
+                                                color: C.textPrimary,
+                                                lineHeight: 1.5
+                                            },
+                                            children: item.action
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/SearchForm.tsx",
+                                            lineNumber: 255,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                fontSize: "10px",
+                                                fontWeight: 500,
+                                                padding: "3px 8px",
+                                                borderRadius: "99px",
+                                                flexShrink: 0,
+                                                ...impactStyle(item.impact)
+                                            },
+                                            children: item.impact
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/SearchForm.tsx",
+                                            lineNumber: 256,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, item.priority, true, {
+                                    fileName: "[project]/app/components/SearchForm.tsx",
+                                    lineNumber: 253,
+                                    columnNumber: 15
+                                }, this))
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/SearchForm.tsx",
+                            lineNumber: 251,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/app/components/SearchForm.tsx",
+                    lineNumber: 249,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                    onClick: ()=>{
+                        setResult(null);
+                        setBusinessName("");
+                        setCity("");
+                    },
+                    style: {
+                        width: "100%",
+                        padding: "13px",
+                        background: "transparent",
+                        border: `0.5px solid ${C.border}`,
+                        borderRadius: "12px",
+                        fontSize: "14px",
+                        color: C.textSecondary,
+                        cursor: "pointer",
+                        marginTop: "0.5rem"
+                    },
+                    children: "Nuova analisi"
+                }, void 0, false, {
+                    fileName: "[project]/app/components/SearchForm.tsx",
+                    lineNumber: 262,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/app/components/SearchForm.tsx",
+            lineNumber: 114,
+            columnNumber: 7
+        }, this);
+    }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         style: {
             display: "flex",
@@ -1146,7 +1430,7 @@ function SearchForm() {
                 }
             }, void 0, false, {
                 fileName: "[project]/app/components/SearchForm.tsx",
-                lineNumber: 195,
+                lineNumber: 276,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1164,14 +1448,14 @@ function SearchForm() {
                     "Scopri quanto è visibile",
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                         fileName: "[project]/app/components/SearchForm.tsx",
-                        lineNumber: 198,
+                        lineNumber: 279,
                         columnNumber: 33
                     }, this),
                     "la tua attività online"
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/SearchForm.tsx",
-                lineNumber: 197,
+                lineNumber: 278,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1186,7 +1470,7 @@ function SearchForm() {
                 children: "Analisi completa in 30 secondi. Recensioni, posizionamento, social e piano d'azione."
             }, void 0, false, {
                 fileName: "[project]/app/components/SearchForm.tsx",
-                lineNumber: 201,
+                lineNumber: 282,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1217,7 +1501,7 @@ function SearchForm() {
                                 children: "NOME ATTIVITÀ"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/SearchForm.tsx",
-                                lineNumber: 207,
+                                lineNumber: 288,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1239,13 +1523,13 @@ function SearchForm() {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/app/components/SearchForm.tsx",
-                                lineNumber: 208,
+                                lineNumber: 289,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/SearchForm.tsx",
-                        lineNumber: 206,
+                        lineNumber: 287,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1264,7 +1548,7 @@ function SearchForm() {
                                 children: "CITTÀ"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/SearchForm.tsx",
-                                lineNumber: 218,
+                                lineNumber: 299,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1286,13 +1570,13 @@ function SearchForm() {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/app/components/SearchForm.tsx",
-                                lineNumber: 219,
+                                lineNumber: 300,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/SearchForm.tsx",
-                        lineNumber: 217,
+                        lineNumber: 298,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1314,7 +1598,7 @@ function SearchForm() {
                         children: "Analizza"
                     }, void 0, false, {
                         fileName: "[project]/app/components/SearchForm.tsx",
-                        lineNumber: 228,
+                        lineNumber: 309,
                         columnNumber: 9
                     }, this),
                     error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1327,13 +1611,13 @@ function SearchForm() {
                         children: error
                     }, void 0, false, {
                         fileName: "[project]/app/components/SearchForm.tsx",
-                        lineNumber: 235,
+                        lineNumber: 316,
                         columnNumber: 19
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/SearchForm.tsx",
-                lineNumber: 205,
+                lineNumber: 286,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1345,13 +1629,13 @@ function SearchForm() {
                 children: "Gratuito · Nessuna registrazione richiesta"
             }, void 0, false, {
                 fileName: "[project]/app/components/SearchForm.tsx",
-                lineNumber: 238,
+                lineNumber: 319,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/SearchForm.tsx",
-        lineNumber: 193,
+        lineNumber: 274,
         columnNumber: 5
     }, this);
 }

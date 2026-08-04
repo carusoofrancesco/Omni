@@ -8,8 +8,30 @@ type AnalysisResult = {
   city: string
   omniScore: number
   reputation: { score: number; rating: number; totalReviews: number }
-  visibility: { score: number; foundOnGoogle: boolean; hasWebsite: boolean; websiteUrl: string | null }
-  social: { score: number; hasInstagram: boolean; hasFacebook: boolean }
+  visibility: {
+    score: number
+    foundOnGoogle: boolean
+    hasWebsite: boolean
+    websiteUrl: string | null
+    discoverability: {
+      score: number
+      keywords: {
+        keyword: string
+        position: number | null
+        inLocalPack: boolean
+        localPackPosition: number | null
+        score: number
+      }[]
+    }
+  }
+  social: {
+    score: number
+    instagram: { found: boolean; url: string | null; verified: boolean }
+    facebook: { found: boolean; url: string | null }
+    tiktok: { found: boolean; url: string | null }
+    tripadvisor: { found: boolean; url: string | null; rating: number | null; reviews: number | null }
+    nameConsistency: boolean
+  }
   analysis: { strengths: string[]; weaknesses: string[]; summary: string; sentimentScore: number } | null
   details: { address: string; phone: string | null; website: string | null; googleMapsUrl: string; isOpen: boolean | null }
   actionPlan: { priority: number; action: string; impact: string }[]
@@ -58,6 +80,7 @@ export default function SearchForm() {
         body: JSON.stringify({ businessName, city }),
       })
       const data = await response.json()
+      console.log("Social ricevuto:", JSON.stringify(data.social, null, 2))
       if (!response.ok) { setError(data.error || "Qualcosa è andato storto"); return }
       setResult(data)
     } catch {
@@ -69,125 +92,183 @@ export default function SearchForm() {
 
   if (isLoading) return <LoadingScreen businessName={businessName} city={city} />
 
-  if (result) return (
-    <div style={{ maxWidth: "480px", margin: "0 auto", padding: "0 1.5rem 4rem" }}>
+  if (result) {
+    const ig = result.social?.instagram ?? { found: false, url: null, verified: false }
+    const fb = result.social?.facebook ?? { found: false, url: null }
+    const tk = result.social?.tiktok ?? { found: false, url: null }
+    const ta = result.social?.tripadvisor ?? { found: false, url: null, rating: null, reviews: null }
+    const nc = result.social?.nameConsistency ?? false
+    const socialScore = result.social?.score ?? 0
 
-      <div style={{ background: C.card, border: `0.5px solid ${C.border}`, borderRadius: "20px", padding: "2rem", textAlign: "center", marginBottom: "1rem" }}>
-        <div style={{ fontSize: "11px", letterSpacing: "0.8px", color: C.textTertiary, marginBottom: "0.75rem" }}>OMNI SCORE</div>
-        <div style={{ fontSize: "96px", fontWeight: 800, letterSpacing: "-6px", color: C.purple, lineHeight: 1 }}>{result.omniScore}</div>
-        <div style={{ fontSize: "12px", color: C.textTertiary, marginTop: "0.4rem" }}>su 100</div>
-        <div style={{ marginTop: "1.25rem", background: C.input, borderRadius: "99px", height: "2px", overflow: "hidden" }}>
-          <div style={{ height: "2px", width: `${result.omniScore}%`, background: `linear-gradient(90deg,${C.purpleLight},${C.purple})`, borderRadius: "99px", transition: "width 1s cubic-bezier(0.16,1,0.3,1)" }} />
-        </div>
-        <div style={{ fontSize: "13px", color: C.textTertiary, marginTop: "1rem" }}>{result.businessName} · {result.city}</div>
-      </div>
+    const socialItems = [
+      { label: "Instagram", found: ig.found, sub: ig.found ? (ig.verified ? "Verificato" : "Trovato") : "Non trovato", url: ig.url },
+      { label: "Facebook", found: fb.found, sub: fb.found ? "Trovato" : "Non trovato", url: fb.url },
+      { label: "TikTok", found: tk.found, sub: tk.found ? "Trovato" : "Non trovato", url: tk.url },
+      { label: "TripAdvisor", found: ta.found, sub: ta.found ? (ta.rating ? `${ta.rating}/5` : "Trovato") : "Non trovato", url: ta.url },
+      { label: "Nome coerente", found: nc, sub: nc ? "Sì" : "No", url: null },
+    ]
 
-      <div style={{ background: C.card, border: `0.5px solid ${C.border}`, borderRadius: "20px", padding: "1.5rem 2rem", marginBottom: "1rem" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", textAlign: "center" as const }}>
-          <div style={{ padding: "0.5rem 0", borderRight: `0.5px solid ${C.border}` }}>
-            <div style={{ fontSize: "10px", letterSpacing: "0.6px", color: C.textTertiary, marginBottom: "0.5rem" }}>REPUTAZIONE</div>
-            <div style={{ fontSize: "52px", fontWeight: 800, letterSpacing: "-3px", color: scoreColor(result.reputation.score), lineHeight: 1 }}>{result.reputation.score}</div>
-            <div style={{ fontSize: "10px", color: C.textTertiary, marginTop: "0.5rem" }}>{result.reputation.rating} · {result.reputation.totalReviews} rec.</div>
+    const socialSubtitle = [ig.found && "IG", fb.found && "FB", tk.found && "TK"].filter(Boolean).join(" · ") || "Nessun profilo"
+
+    return (
+      <div style={{ maxWidth: "480px", margin: "0 auto", padding: "0 1.5rem 4rem" }}>
+
+        <div style={{ background: C.card, border: `0.5px solid ${C.border}`, borderRadius: "20px", padding: "2rem", textAlign: "center", marginBottom: "1rem" }}>
+          <div style={{ fontSize: "11px", letterSpacing: "0.8px", color: C.textTertiary, marginBottom: "0.75rem" }}>OMNI SCORE</div>
+          <div style={{ fontSize: "96px", fontWeight: 800, letterSpacing: "-6px", color: C.purple, lineHeight: 1 }}>{result.omniScore}</div>
+          <div style={{ fontSize: "12px", color: C.textTertiary, marginTop: "0.4rem" }}>su 100</div>
+          <div style={{ marginTop: "1.25rem", background: C.input, borderRadius: "99px", height: "2px", overflow: "hidden" }}>
+            <div style={{ height: "2px", width: `${result.omniScore}%`, background: `linear-gradient(90deg,${C.purpleLight},${C.purple})`, borderRadius: "99px", transition: "width 1s cubic-bezier(0.16,1,0.3,1)" }} />
           </div>
-          <div style={{ padding: "0.5rem 0", borderRight: `0.5px solid ${C.border}` }}>
-            <div style={{ fontSize: "10px", letterSpacing: "0.6px", color: C.textTertiary, marginBottom: "0.5rem" }}>VISIBILITÀ</div>
-            <div style={{ fontSize: "52px", fontWeight: 800, letterSpacing: "-3px", color: scoreColor(result.visibility.score), lineHeight: 1 }}>{result.visibility.score}</div>
-            <div style={{ fontSize: "10px", color: C.textTertiary, marginTop: "0.5rem" }}>{result.visibility.hasWebsite ? "Sito web" : "Nessun sito"}</div>
-          </div>
-          <div style={{ padding: "0.5rem 0" }}>
-            <div style={{ fontSize: "10px", letterSpacing: "0.6px", color: C.textTertiary, marginBottom: "0.5rem" }}>SOCIAL</div>
-            <div style={{ fontSize: "52px", fontWeight: 800, letterSpacing: "-3px", color: scoreColor(result.social.score), lineHeight: 1 }}>{result.social.score}</div>
-            <div style={{ fontSize: "10px", color: C.textTertiary, marginTop: "0.5rem" }}>Non analizzato</div>
+          <div style={{ fontSize: "13px", color: C.textTertiary, marginTop: "1rem" }}>{result.businessName} · {result.city}</div>
+        </div>
+
+        <div style={{ background: C.card, border: `0.5px solid ${C.border}`, borderRadius: "20px", padding: "1.5rem 2rem", marginBottom: "1rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", textAlign: "center" as const }}>
+            <div style={{ padding: "0.5rem 0", borderRight: `0.5px solid ${C.border}` }}>
+              <div style={{ fontSize: "10px", letterSpacing: "0.6px", color: C.textTertiary, marginBottom: "0.5rem" }}>REPUTAZIONE</div>
+              <div style={{ fontSize: "52px", fontWeight: 800, letterSpacing: "-3px", color: scoreColor(result.reputation.score), lineHeight: 1 }}>{result.reputation.score}</div>
+              <div style={{ fontSize: "10px", color: C.textTertiary, marginTop: "0.5rem" }}>{result.reputation.rating} · {result.reputation.totalReviews} rec.</div>
+            </div>
+            <div style={{ padding: "0.5rem 0", borderRight: `0.5px solid ${C.border}` }}>
+              <div style={{ fontSize: "10px", letterSpacing: "0.6px", color: C.textTertiary, marginBottom: "0.5rem" }}>VISIBILITÀ</div>
+              <div style={{ fontSize: "52px", fontWeight: 800, letterSpacing: "-3px", color: scoreColor(result.visibility.score), lineHeight: 1 }}>{result.visibility.score}</div>
+              <div style={{ fontSize: "10px", color: C.textTertiary, marginTop: "0.5rem" }}>{result.visibility.hasWebsite ? "Sito web" : "Nessun sito"}</div>
+            </div>
+            <div style={{ padding: "0.5rem 0" }}>
+              <div style={{ fontSize: "10px", letterSpacing: "0.6px", color: C.textTertiary, marginBottom: "0.5rem" }}>SOCIAL</div>
+              <div style={{ fontSize: "52px", fontWeight: 800, letterSpacing: "-3px", color: scoreColor(socialScore), lineHeight: 1 }}>{socialScore}</div>
+              <div style={{ fontSize: "10px", color: C.textTertiary, marginTop: "0.5rem" }}>{socialSubtitle}</div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div style={{ background: C.card, border: `0.5px solid ${C.border}`, borderRadius: "20px", padding: "1.5rem", marginBottom: "1rem" }}>
-        <div style={{ fontSize: "11px", letterSpacing: "0.5px", color: C.textTertiary, marginBottom: "1rem" }}>DETTAGLI</div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-          {result.details.address && (
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", fontSize: "13px", color: C.textSecondary }}>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#AEAEB2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-              {result.details.address}
-            </div>
-          )}
-          {result.details.phone && (
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", fontSize: "13px", color: C.textSecondary }}>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#AEAEB2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-              {result.details.phone}
-            </div>
-          )}
-          {result.details.isOpen !== null && (
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", fontSize: "13px" }}>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10" stroke={result.details.isOpen ? "#16A34A" : "#C0392B"} />
-                <polyline points="12 6 12 12 16 14" stroke={result.details.isOpen ? "#16A34A" : "#C0392B"} />
-              </svg>
-              <span style={{ color: result.details.isOpen ? "#16A34A" : "#C0392B", fontWeight: 500 }}>
-                {result.details.isOpen ? "Aperto ora" : "Chiuso ora"}
-              </span>
-            </div>
-          )}
-          {result.details.googleMapsUrl && (
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", fontSize: "13px" }}>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#AEAEB2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-              <span style={{ color: C.purple, fontWeight: 500, cursor: "pointer" }} onClick={() => window.open(result.details.googleMapsUrl, "_blank")}>
-                Vedi su Google Maps
-              </span>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {result.analysis && (
         <div style={{ background: C.card, border: `0.5px solid ${C.border}`, borderRadius: "20px", padding: "1.5rem", marginBottom: "1rem" }}>
-          <div style={{ fontSize: "11px", letterSpacing: "0.5px", color: C.textTertiary, marginBottom: "0.75rem" }}>ANALISI AI</div>
-          <p style={{ fontSize: "13px", color: C.textSecondary, lineHeight: 1.6, marginBottom: "1.25rem", fontStyle: "italic" }}>
-            {result.analysis.summary}
-          </p>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
-            <div>
-              <div style={{ fontSize: "11px", letterSpacing: "0.4px", color: "#0F6E56", marginBottom: "0.6rem" }}>PUNTI DI FORZA</div>
-              <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                {result.analysis.strengths.map((s, i) => (
-                  <div key={i} style={{ fontSize: "12px", color: C.textSecondary, background: "#E1F5EE", borderRadius: "10px", padding: "8px 10px" }}>{s}</div>
-                ))}
+          <div style={{ fontSize: "11px", letterSpacing: "0.5px", color: C.textTertiary, marginBottom: "1rem" }}>DETTAGLI</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+            {result.details.address && (
+              <div style={{ display: "flex", alignItems: "center", gap: "12px", fontSize: "13px", color: C.textSecondary }}>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#AEAEB2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                {result.details.address}
               </div>
-            </div>
-            <div>
-              <div style={{ fontSize: "11px", letterSpacing: "0.4px", color: "#A32D2D", marginBottom: "0.6rem" }}>CRITICITÀ</div>
-              <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                {result.analysis.weaknesses.map((w, i) => (
-                  <div key={i} style={{ fontSize: "12px", color: C.textSecondary, background: "#FCEBEB", borderRadius: "10px", padding: "8px 10px" }}>{w}</div>
-                ))}
+            )}
+            {result.details.phone && (
+              <div style={{ display: "flex", alignItems: "center", gap: "12px", fontSize: "13px", color: C.textSecondary }}>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#AEAEB2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                {result.details.phone}
               </div>
+            )}
+            {result.details.isOpen !== null && (
+              <div style={{ display: "flex", alignItems: "center", gap: "12px", fontSize: "13px" }}>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" stroke={result.details.isOpen ? "#16A34A" : "#C0392B"} />
+                  <polyline points="12 6 12 12 16 14" stroke={result.details.isOpen ? "#16A34A" : "#C0392B"} />
+                </svg>
+                <span style={{ color: result.details.isOpen ? "#16A34A" : "#C0392B", fontWeight: 500 }}>
+                  {result.details.isOpen ? "Aperto ora" : "Chiuso ora"}
+                </span>
+              </div>
+            )}
+            {result.details.googleMapsUrl && (
+              <div style={{ display: "flex", alignItems: "center", gap: "12px", fontSize: "13px" }}>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#AEAEB2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                <span style={{ color: C.purple, fontWeight: 500, cursor: "pointer" }} onClick={() => window.open(result.details.googleMapsUrl, "_blank")}>
+                  Vedi su Google Maps
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div style={{ background: C.card, border: `0.5px solid ${C.border}`, borderRadius: "20px", padding: "1.5rem", marginBottom: "1rem" }}>
+          <div style={{ fontSize: "11px", letterSpacing: "0.5px", color: C.textTertiary, marginBottom: "1rem" }}>DISCOVERABILITY</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            {result.visibility.discoverability.keywords.map((k, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: "12px", padding: "10px 12px", background: C.input, borderRadius: "10px" }}>
+                <div style={{ width: "8px", height: "8px", borderRadius: "50%", flexShrink: 0, background: k.score >= 70 ? "#4ABA7A" : k.score >= 40 ? "#E8A84A" : "#D96B6B" }} />
+                <div style={{ flex: 1, fontSize: "13px", color: C.textPrimary }}>{k.keyword}</div>
+                <div style={{ fontSize: "11px", color: C.textTertiary, flexShrink: 0 }}>
+                  {k.inLocalPack ? `Maps #${k.localPackPosition}` : k.position ? `#${k.position}` : "Non trovato"}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: "1rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <div style={{ fontSize: "11px", color: C.textTertiary }}>Score discoverability</div>
+            <div style={{ fontSize: "20px", fontWeight: 800, letterSpacing: "-1px", color: scoreColor(result.visibility.discoverability.score) }}>
+              {result.visibility.discoverability.score}
             </div>
           </div>
         </div>
-      )}
 
-      <div style={{ background: C.card, border: `0.5px solid ${C.border}`, borderRadius: "20px", padding: "1.5rem", marginBottom: "1rem" }}>
-        <div style={{ fontSize: "11px", letterSpacing: "0.5px", color: C.textTertiary, marginBottom: "1rem" }}>PIANO D'AZIONE</div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-          {result.actionPlan.map((item) => (
-            <div key={item.priority} style={{ display: "flex", alignItems: "flex-start", gap: "12px", padding: "12px", background: C.input, borderRadius: "12px" }}>
-              <div style={{ width: "22px", height: "22px", borderRadius: "50%", background: C.purple, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "11px", fontWeight: 500, color: "#fff", flexShrink: 0 }}>{item.priority}</div>
-              <div style={{ flex: 1, fontSize: "13px", color: C.textPrimary, lineHeight: 1.5 }}>{item.action}</div>
-              <div style={{ fontSize: "10px", fontWeight: 500, padding: "3px 8px", borderRadius: "99px", flexShrink: 0, ...impactStyle(item.impact) }}>{item.impact}</div>
-            </div>
-          ))}
+        <div style={{ background: C.card, border: `0.5px solid ${C.border}`, borderRadius: "20px", padding: "1.5rem", marginBottom: "1rem" }}>
+          <div style={{ fontSize: "11px", letterSpacing: "0.5px", color: C.textTertiary, marginBottom: "1rem" }}>SOCIAL & REPUTAZIONE</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            {socialItems.map((item, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: "12px", padding: "10px 12px", background: C.input, borderRadius: "10px" }}>
+                <div style={{ width: "8px", height: "8px", borderRadius: "50%", flexShrink: 0, background: item.found ? "#4ABA7A" : "#D96B6B" }} />
+                <div style={{ flex: 1, fontSize: "13px", color: C.textPrimary }}>{item.label}</div>
+                <div
+                  style={{ fontSize: "11px", color: item.url ? C.purple : C.textTertiary, cursor: item.url ? "pointer" : "default" }}
+                  onClick={() => item.url && window.open(item.url, "_blank")}
+                >
+                  {item.sub}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
+
+        {result.analysis && (
+          <div style={{ background: C.card, border: `0.5px solid ${C.border}`, borderRadius: "20px", padding: "1.5rem", marginBottom: "1rem" }}>
+            <div style={{ fontSize: "11px", letterSpacing: "0.5px", color: C.textTertiary, marginBottom: "0.75rem" }}>ANALISI AI</div>
+            <p style={{ fontSize: "13px", color: C.textSecondary, lineHeight: 1.6, marginBottom: "1.25rem", fontStyle: "italic" }}>
+              {result.analysis.summary}
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
+              <div>
+                <div style={{ fontSize: "11px", letterSpacing: "0.4px", color: "#0F6E56", marginBottom: "0.6rem" }}>PUNTI DI FORZA</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                  {result.analysis.strengths.map((s, i) => (
+                    <div key={i} style={{ fontSize: "12px", color: C.textSecondary, background: "#E1F5EE", borderRadius: "10px", padding: "8px 10px" }}>{s}</div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <div style={{ fontSize: "11px", letterSpacing: "0.4px", color: "#A32D2D", marginBottom: "0.6rem" }}>CRITICITÀ</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                  {result.analysis.weaknesses.map((w, i) => (
+                    <div key={i} style={{ fontSize: "12px", color: C.textSecondary, background: "#FCEBEB", borderRadius: "10px", padding: "8px 10px" }}>{w}</div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div style={{ background: C.card, border: `0.5px solid ${C.border}`, borderRadius: "20px", padding: "1.5rem", marginBottom: "1rem" }}>
+          <div style={{ fontSize: "11px", letterSpacing: "0.5px", color: C.textTertiary, marginBottom: "1rem" }}>PIANO D'AZIONE</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+            {result.actionPlan.map((item) => (
+              <div key={item.priority} style={{ display: "flex", alignItems: "flex-start", gap: "12px", padding: "12px", background: C.input, borderRadius: "12px" }}>
+                <div style={{ width: "22px", height: "22px", borderRadius: "50%", background: C.purple, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "11px", fontWeight: 500, color: "#fff", flexShrink: 0 }}>{item.priority}</div>
+                <div style={{ flex: 1, fontSize: "13px", color: C.textPrimary, lineHeight: 1.5 }}>{item.action}</div>
+                <div style={{ fontSize: "10px", fontWeight: 500, padding: "3px 8px", borderRadius: "99px", flexShrink: 0, ...impactStyle(item.impact) }}>{item.impact}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <button
+          onClick={() => { setResult(null); setBusinessName(""); setCity("") }}
+          style={{ width: "100%", padding: "13px", background: "transparent", border: `0.5px solid ${C.border}`, borderRadius: "12px", fontSize: "14px", color: C.textSecondary, cursor: "pointer", marginTop: "0.5rem" }}
+        >
+          Nuova analisi
+        </button>
+
       </div>
-
-      <button
-        onClick={() => { setResult(null); setBusinessName(""); setCity("") }}
-        style={{ width: "100%", padding: "13px", background: "transparent", border: `0.5px solid ${C.border}`, borderRadius: "12px", fontSize: "14px", color: C.textSecondary, cursor: "pointer", marginTop: "0.5rem" }}
-      >
-        Nuova analisi
-      </button>
-
-    </div>
-  )
+    )
+  }
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "calc(100vh - 80px)", padding: "0 1.5rem", textAlign: "center", position: "relative", overflow: "hidden" }}>
