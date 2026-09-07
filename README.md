@@ -19,7 +19,7 @@ Omni analizza la visibilità online di un'attività (ristorante, negozio, studio
 
 ## Tecnologie usate
 
-- Python 3.x
+- JavaScript
 - Google Places API
 - Google Custom Search API
 
